@@ -15,6 +15,7 @@ class Server {
 
     this.paths = {
       notification: '/api/notification',
+      printer: '/api/printer'
     }
 
     this.firebase();
@@ -49,6 +50,10 @@ class Server {
       this.paths.notification,
       require(`${Routes}/notification.route`)
     );
+    this.app.use(
+      this.paths.printer,
+      require(`${Routes}/printer.route`)
+    )
   }
 
   listen() {

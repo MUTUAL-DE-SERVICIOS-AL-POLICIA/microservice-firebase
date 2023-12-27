@@ -7,7 +7,7 @@ const {
 const router = Router();
 
 
-router.get(
+router.post(
     "/print",
     launchPrinter
 );

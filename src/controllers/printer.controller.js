@@ -14,8 +14,9 @@ const launchPrinter = async (req = request, res = response) => {
         console.log("Impresora predeterminada: ", defaultPrinter);
         if (defaultPrinter != null && Object.keys(defaultPrinter).length !== 0) {
             const options = {
+                printAsImage:true,
                 printer: defaultPrinter.name,
-                paperSize: "Ejecutivo",
+                paperSize: "Carta",
                 scale: "fit"
             };
             await pdfToPrinter.print(filePathAbsolute, options);

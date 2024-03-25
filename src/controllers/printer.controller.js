@@ -12,23 +12,19 @@ const launchPrinter = async (req = request, res = response) => {
         console.log(filePathAbsolute);
         const defaultPrinter = await pdfToPrinter.getDefaultPrinter();
         console.log("Impresora predeterminada: ", defaultPrinter);
-        let pages = 1;
-        if (defaultPrinter!=null){
-            if (Object.keys(defaultPrinter).length !== 0) {
-                if (pages == null || pages == undefined) pages = 1;
-                    const options = {
-                    printer: defaultPrinter.name,
-                    pages: pages,
-                    paperSize: "Ejecutivo",
-                    scale: "fit"
-                };
+        if (defaultPrinter != null && Object.keys(defaultPrinter).length !== 0) {
+            const options = {
+                printAsImage:true,
+                printer: defaultPrinter.name,
+                paperSize: "Carta",
+                scale: "fit"
+            };
             await pdfToPrinter.print(filePathAbsolute, options);
             res.json({
                 message: "Impresión exitosa",
                 data: [options]
             });
-        }}
-        else {
+        } else {
             res.status(400).json({
                 message: "No hay impresora disponible",
                 data: []

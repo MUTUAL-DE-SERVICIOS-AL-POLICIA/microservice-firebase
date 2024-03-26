@@ -1,5 +1,5 @@
+.env
 node_modules
 /src/keys
-.env
 /src/public
-uploads
+/uploads/*

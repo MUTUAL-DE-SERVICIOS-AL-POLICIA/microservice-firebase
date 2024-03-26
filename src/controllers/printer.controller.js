@@ -2,8 +2,6 @@ const { request, response } = require("express");
 const pdfToPrinter = require('pdf-to-printer');
 const path = require('path');
 
-const fs = require('fs');
-
 const launchPrinter = async (req = request, res = response) => {
     try {
         console.log(req.files);

@@ -4,6 +4,15 @@ const { launchPrinter } = require("../controllers/printer.controller");
 
 const router = Router();
 const multer = require('multer')
+const fs = require('fs');
+
+// Creando la carpeta
+const uploadsFolder = 'uploads'
+
+if(!fs.existsSync(uploadsFolder)){
+    fs.mkdirSync(uploadsFolder)
+}
+
 // Configurar multer para manejar la carga de archivos
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

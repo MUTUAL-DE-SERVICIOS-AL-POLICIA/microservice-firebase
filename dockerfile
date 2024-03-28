@@ -8,7 +8,4 @@ RUN npm install --no-audit --no-found
 
 EXPOSE 9393
 
-ARG PORT
-ENV PORT=$PORT
-
 CMD ["npm", "run", "start"]

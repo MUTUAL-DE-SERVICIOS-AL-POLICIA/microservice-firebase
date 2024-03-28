@@ -4,10 +4,8 @@ const path = require('path');
 
 const launchPrinter = async (req = request, res = response) => {
     try {
-        console.log(req.files);
         const _path = req.files[0].path;
         const filePathAbsolute = path.resolve('', _path);
-        console.log(filePathAbsolute);
         const defaultPrinter = await pdfToPrinter.getDefaultPrinter();
         console.log("Impresora predeterminada: ", defaultPrinter);
         if (defaultPrinter != null && Object.keys(defaultPrinter).length !== 0) {

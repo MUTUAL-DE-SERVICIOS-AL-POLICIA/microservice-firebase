@@ -48,9 +48,8 @@ const notificationGroupUsers = async (req = request, res = response) => {
     console.log(tokens)
     admin
       .messaging()
-      .sendMulticast(message)
+      .sendEachForMulticast(message)
       .then((response) => {
-        console.log(response);
         res.json({ msg: "Successfully sent message", message: response });
       })
       .catch((error) => {

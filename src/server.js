@@ -2,6 +2,8 @@ const express = require("express");
 
 const cors = require("cors");
 
+const logger = require('./utils/logger');
+
 const admin = require("firebase-admin");
 
 const Routes = "./routes";
@@ -31,6 +33,7 @@ class Server {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
     });
+    logger.info("Firebase inicializado");
   }
   middlewares() {
     this.app.use((express.json({ limit: '50mb' })));

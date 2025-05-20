@@ -2,10 +2,15 @@ FROM node:alpine
 
 WORKDIR /app
 
-COPY . .
-
+COPY package*.json ./
 RUN npm install --no-audit --no-found
 
-EXPOSE 9393
+# Copiar todo el proyecto al contenedor
+COPY . .
+
+# Copiar las claves necesarias
+COPY ./src/keys /app/keys
+
+EXPOSE 8082
 
 CMD ["npm", "run", "start"]
